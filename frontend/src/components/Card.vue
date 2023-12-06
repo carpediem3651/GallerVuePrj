@@ -1,28 +1,39 @@
 <template>
-    <div class="col">
-        <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">{{ item }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
+  <div class="col">
+    <div class="card shadow-sm">
+      <span class="img" :style="{ backgroundImage: `url(${item.imgPath})` }" />
+      <div class="card-body">
+        <span class="card-text">{{ item.name }} &nbsp;</span>
+        <span class="discount badge bg-danger">
+             {{item.discountPer}}% 
+        </span>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-primary">구입하기</button>
+          <small class="price text-body-secondary">
+             {{lib.getNumberFormatted(item.price)}}원 
+          </small>
+          <small class="real text-danger text-danger">
+             {{item.price - (item.price * item.discountPer/100)}}원
+          </small>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name:"Card",
-        props:{
-          item: String
-        }
+import lib from "@/script/lib";
+
+export default {
+    name:"Card",
+    props:{
+      item: Object
+    },
+    setup() {
+      return {lib}
     }
+}
+
 </script>
 
 <style scoped>
