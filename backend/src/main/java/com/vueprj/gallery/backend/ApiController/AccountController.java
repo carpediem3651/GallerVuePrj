@@ -1,16 +1,16 @@
 package com.vueprj.gallery.backend.ApiController;
 
-import org.hibernate.mapping.Map;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.vueprj.gallery.backend.entity.Member;
 import com.vueprj.gallery.backend.repository.MemberRepository;
-
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class AccountController {
@@ -26,6 +26,6 @@ public class AccountController {
             return member.getId();
         }
 
-        return 0;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }
