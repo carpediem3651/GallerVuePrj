@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BackendApplication<beckend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.vueprj.gallery.backend.BackendApplication",
+            "projectName": "beckend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
